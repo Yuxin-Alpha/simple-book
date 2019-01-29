@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import './style.css'
 
 class TodoList extends Component{
     constructor(props) {
@@ -12,8 +13,10 @@ class TodoList extends Component{
 
         return (
             <Fragment>
+                {/*我是一个注释*/}
                 <div>
                     <input
+                        className='input'
                         value={this.state.inputValue}
                         onChange={this.handleInputChange.bind(this)}
                     />
