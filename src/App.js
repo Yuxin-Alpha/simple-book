@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Header from './common/header'
 import { GlobalStyle } from './style'
 
 class App extends Component {
@@ -6,7 +7,7 @@ class App extends Component {
     return (
       <Fragment>
         <GlobalStyle/>
-          hello world
+          <Header/>
       </Fragment>
     );
   }
