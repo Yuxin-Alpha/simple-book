@@ -9,11 +9,16 @@ class Header extends  Component {
         <Nav>
           <NavItem className="left active">首页</NavItem>
           <NavItem className="left">下载APP</NavItem>
-          <NavItem className="right">Aa</NavItem>
+          <NavItem className="right">
+            <i className="iconfont">&#xe636;</i>
+          </NavItem>
           <NavItem className="right">登录</NavItem>
-          <NavSearch ></NavSearch>
+          <NavSearch >
+          </NavSearch>
           <Addition>
-            <Button className="article">写文章</Button>
+            <Button className="article">
+              <i className="iconfont">&#xe616;</i>写文章
+            </Button>
             <Button className="reg">注册</Button>
           </Addition>
         </Nav>
