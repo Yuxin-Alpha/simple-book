@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { Globalstyle } from './style'
+import Header from './common/header'
 class App extends Component {
   render() {
     return (
       <Fragment>
         <Globalstyle />
-        <div>simple book
-        </div>
+        <Header/>
       </Fragment>
     );
   }
