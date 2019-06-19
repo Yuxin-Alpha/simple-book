@@ -9,22 +9,32 @@ import {
   SearchInfoItem
 } from "./style";
 import { CSSTransition } from 'react-transition-group'
-import {searchBlur, searchFocus, getSearchList } from './store/actionCreators'
+import {searchBlur, searchFocus, getSearchList, mouseEnter, mouseLeave, changePage } from './store/actionCreators'
 
 class Header extends Component {
   getListArea () {
-    let {focused, list} = this.props
-    if (focused) {
+    const {focused, list, page, mouseIn, totalPage, handleMouseEnter, handleMouseLeave, handleChangePage} = this.props
+    const jsList = list.toJS();
+    const pageList = []
+    if (jsList.length > 0) {
+      for (let i = (page - 1) * 10; i < page * 10; i++) {
+        pageList.push(
+          <SearchInfoItem key={jsList[i]}>{jsList[i]}</SearchInfoItem>
+        )
+      }
+    }
+    if (focused || mouseIn) {
       return (
-        <SearchInfo>
+        <SearchInfo
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <SearchInfoTitle>
             热门搜索
-            <SearchInfoSwitch>换一批</SearchInfoSwitch>
+            <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage)}>换一批</SearchInfoSwitch>
           </SearchInfoTitle>
           {
-            list.map((item) => {
-              return (<SearchInfoItem key={item}>{item}</SearchInfoItem>)
-            })
+            pageList
           }
         </SearchInfo>
       )
@@ -77,7 +87,10 @@ class Header extends Component {
 const mapStateToProps = (state) => {
   return {
     focused: state.getIn(['header', 'focused']),
-    list: state.getIn(['header', 'list'])
+    list: state.getIn(['header', 'list']),
+    page: state.getIn(['header', 'page']),
+    totalPage: state.getIn(['header', 'totalPage']),
+    mouseIn: state.getIn(['header', 'mouseIn'])
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -88,6 +101,19 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleInputBlur() {
       dispatch(searchBlur())
+    },
+    handleMouseEnter() {
+      dispatch(mouseEnter())
+    },
+    handleMouseLeave() {
+      dispatch(mouseLeave())
+    },
+    handleChangePage(page, totalPage) {
+      if (page < totalPage) {
+        dispatch(changePage(page + 1))
+      } else {
+        dispatch(changePage(1))
+      }
     }
   }
 }
