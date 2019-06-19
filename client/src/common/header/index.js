@@ -66,12 +66,10 @@ class Header extends Component {
                 onBlur={handleInputBlur}
               >
               </NavSearch>
-
             </CSSTransition>
             <i className={focused ? 'focused iconfont' : 'iconfont'}>&#xe62d;</i>
             {this.getListArea()}
           </SearchWrapper>
-
           <Addition>
             <Button className="article">
               <i className="iconfont">&#xe616;</i>写文章
@@ -82,7 +80,6 @@ class Header extends Component {
       </HeaderWrapper>
     )
   }
-
 }
 const mapStateToProps = (state) => {
   return {

@@ -34,6 +34,8 @@ export const getSearchList = () => {
     axios.get('/api/headerList.json').then(res => {
       const data = res.data
       dispatch(changeList(data.data))
-    }).catch(err => {})
+    }).catch(err => {
+      throw err
+    })
   }
 }

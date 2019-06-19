@@ -8,6 +8,7 @@ const defaultState = fromJS({
   totalPage: 1,
   mouseIn: false
 })
+
 export default (state = defaultState, action) => {
   switch (action.type) {
     case SEARCH_FOCUS:
