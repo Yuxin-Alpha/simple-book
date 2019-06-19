@@ -33,7 +33,7 @@ class Header extends Component {
     }
   }
   render() {
-    let {focused, handleInputFocus, handleInputBlur} = this.props
+    const {focused, handleInputFocus, handleInputBlur} = this.props
     return (
       <HeaderWrapper>
         <Logo />
@@ -56,12 +56,12 @@ class Header extends Component {
                 onBlur={handleInputBlur}
               >
               </NavSearch>
-          
+
             </CSSTransition>
             <i className={focused ? 'focused iconfont' : 'iconfont'}>&#xe62d;</i>
             {this.getListArea()}
           </SearchWrapper>
-        
+
           <Addition>
             <Button className="article">
               <i className="iconfont">&#xe616;</i>写文章
@@ -72,7 +72,7 @@ class Header extends Component {
       </HeaderWrapper>
     )
   }
-  
+
 }
 const mapStateToProps = (state) => {
   return {

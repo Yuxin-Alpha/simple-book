@@ -2,17 +2,17 @@ import { SEARCH_BlUE, SEARCH_FOCUS, CHANGE_LIST } from './actionTypes'
 import { fromJS } from 'immutable'
 import axios from 'axios'
 
+const changeList = (data) => ({
+  type: CHANGE_LIST,
+  data: fromJS(data)
+})
+
 export const searchFocus = () => ({
   type: SEARCH_FOCUS
 })
 
 export const searchBlur = () => ({
   type: SEARCH_BlUE
-})
-
-export const changeList = (data) => ({
-  type: CHANGE_LIST,
-  data: fromJS(data)
 })
 
 export const getSearchList = () => {
